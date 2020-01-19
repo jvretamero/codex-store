@@ -1,0 +1,21 @@
+{
+    "name": "codex-store",
+    "version": "1.0.0",
+    "description": "Search and store books",
+    "main": "src/server.js",
+    "scripts": {
+        "dev": "nodemon --ignore *.marko.js src/server.js"
+    },
+    "author": "João Vitor Retamero",
+    "license": "MIT",
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    },
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "express-validator": "^6.3.1",
+        "marko": "^4.18.34",
+        "sqlite3": "^4.1.1"
+    }
+}
