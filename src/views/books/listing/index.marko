@@ -1,0 +1,30 @@
+<master-layout>
+    <@body>
+        <table id="books-list">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <for|book| of=input.books>
+                    <tr id=`book_${book.id}`>
+                        <td>${book.id}</td>
+                        <td>${book.title}</td>
+                        <td>${book.price}</td>
+                        <td>
+                            <a href="#">Edit</a>
+                        </td>
+                        <td>
+                            <a href="#" data-ref=book.id data-type="remove">Remove</a>
+                        </td>
+                    </tr>
+                </for>
+            </tbody>
+        </table>
+    </@body>
+</master-layout>
