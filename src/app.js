@@ -14,8 +14,13 @@ app.get("/", (_req, res) => {
     res.marko(require("./views/home"));
 });
 
-app.use((error, _req, _res, _next) => {
+app.use((_req, res, _next) => {
+    res.marko(require("./views/errors/404"));
+});
+
+app.use((error, _req, res, _next) => {
     console.error(error);
+    res.marko(require("./views/errors/500"));
 });
 
 module.exports = app;
