@@ -17,14 +17,17 @@
                         <td>${book.title}</td>
                         <td>${book.price}</td>
                         <td>
-                            <a href="#">Edit</a>
+                            <a href=`/books/${book.id}`>Edit</a>
                         </td>
                         <td>
-                            <a href="#" data-ref=book.id data-type="remove">Remove</a>
+                            <a class="remove-book" href="#" data-ref=book.id data-type="remove">Remove</a>
                         </td>
                     </tr>
                 </for>
             </tbody>
         </table>
     </@body>
+    <@scripts>
+        <script src="assets/js/book-remove.js"/>
+    </@scripts>
 </master-layout>

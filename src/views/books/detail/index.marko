@@ -3,11 +3,12 @@
         <h1>New book</h1>
         <if(input.validations)>
             <for|error| of=input.validations>
-                <div>${error.message}</div>
+                <div>${error.msg}</div>
             </for>
         </if>
         <form action="/books" method="post">
             <if(input.book.id)>
+                <input type="hidden" name="_method" value="PUT"/>
                 <input type="hidden" name="id" value=input.book.id/>
             </if>
             <div>
@@ -37,7 +38,7 @@
                     name="description"
                     placeholder="Insert your description">${input.book.description}</textarea>
             </div>
-            <input type="submit" value="Create"/>
+            <input type="submit" value="Save"/>
         </form>
     </@body>
 </master-layout>

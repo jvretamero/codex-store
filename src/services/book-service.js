@@ -14,13 +14,15 @@ class BookService {
                 ) values (?,?,?)
                 `,
                 [
-                    book.titulo,
-                    book.preco,
-                    book.descricao
+                    book.title,
+                    book.price,
+                    book.description
                 ],
                 error => {
-                    if (error)
+                    if (error) {
+                        console.error(error);
                         return reject('Erro adding book');
+                    }
 
                     resolve();
                 }
