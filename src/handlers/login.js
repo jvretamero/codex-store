@@ -8,7 +8,7 @@ const doLogin = (req, res, next) => {
     let authenticate = req.passport
         .authenticate("local", (error, user, failure) => {
             if (failure)
-                return res.marko(views.login);
+                return res.marko(views.login, failure);
 
             if (error) {
                 console.error(error);

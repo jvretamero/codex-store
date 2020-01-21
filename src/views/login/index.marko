@@ -1,6 +1,9 @@
 <master-layout>
     <@body>
         <h1>Login</h1>
+        <if(input.message)>
+            <div>${input.message}</div>
+        </if>
         <form action="/login" method="POST">
             <div>
                 <label for="email">E-mail:</label>
