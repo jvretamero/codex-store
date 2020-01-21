@@ -6,6 +6,7 @@ const markoExpress = require("marko/express");
 const methodOverride = require("method-override");
 const app = express();
 const handlers = require("./handlers");
+const views = require("./views");
 
 app.use(markoExpress());
 app.use("/assets", express.static("src/assets"));
@@ -23,12 +24,12 @@ app.use(methodOverride(function (req, _res) {
 app.use(handlers);
 
 app.use((_req, res, _next) => {
-    res.marko(require("./views/errors/404"));
+    res.marko(views.errors["404"]);
 });
 
 app.use((error, _req, res, _next) => {
     console.error(error);
-    res.marko(require("./views/errors/500"));
+    res.marko(views.errors["500"]);
 });
 
 module.exports = app;
