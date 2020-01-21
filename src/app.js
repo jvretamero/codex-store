@@ -5,7 +5,8 @@ const bodyParser = require("body-parser");
 const markoExpress = require("marko/express");
 const methodOverride = require("method-override");
 const app = express();
-const handlers = require("./handlers");
+const { createAuthHandlers } = require("./handlers/auth");
+const routes = require("./handlers/routes");
 const views = require("./views");
 
 app.use(markoExpress());
@@ -21,7 +22,8 @@ app.use(methodOverride(function (req, _res) {
     }
 }));
 
-app.use(handlers);
+app.use(createAuthHandlers());
+app.use(routes);
 
 app.use((_req, res, _next) => {
     res.marko(views.errors["404"]);
