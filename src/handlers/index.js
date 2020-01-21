@@ -7,7 +7,6 @@ const bookHandlers = require("./books");
 const Book = require("../models/book");
 
 router.get("/", homeHandlers.home);
-
 const booksRouter = express.Router();
 booksRouter.route("/")
     .get(bookHandlers.listBooks)

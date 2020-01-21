@@ -1,5 +1,7 @@
+const views = require("../views");
+
 const home = (_req, res) => {
-    res.marko(require("../views/home"));
+    res.marko(views.home);
 };
 
 module.exports = {

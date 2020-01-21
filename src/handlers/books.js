@@ -1,13 +1,14 @@
 const { validationResult } = require("express-validator");
 const BookService = require("../services/book-service");
 const db = require("../services/database");
+const views = require("../views");
 
 const listBooks = (_req, res) => {
     const bookService = new BookService(db);
     bookService.list()
         .then(books =>
             res.marko(
-                require("../views/books/listing"),
+                views.books.listing,
                 { books }));
 };
 
@@ -15,7 +16,7 @@ const createBook = (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.marko(
-            require("../views/books/detail"),
+            views.books.detail,
             {
                 book: req.body,
                 validations: errors.array()
@@ -35,7 +36,7 @@ const updateBook = (req, res) => {
 
 const newBook = (_req, res) => {
     res.marko(
-        require("../views/books/detail"),
+        views.books.detail,
         { book: {} });
 };
 
@@ -45,7 +46,7 @@ const detailBook = (req, res) => {
     const bookService = new BookService(db);
     bookService.findById(id)
         .then(book => res.marko(
-            require("../views/books/detail"),
+            views.books.detail,
             { book }));
 };
 
