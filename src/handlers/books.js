@@ -17,7 +17,7 @@ const createBook = (req, res) => {
         return res.marko(
             require("../views/books/detail"),
             {
-                book: {},
+                book: req.body,
                 validations: errors.array()
             });
     }
