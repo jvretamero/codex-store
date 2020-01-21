@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const markoExpress = require("marko/express");
 const methodOverride = require("method-override");
 const app = express();
-const { createAuthHandlers } = require("./handlers/auth");
+const { createAuthHandlers, checkAuthenticationHandler } = require("./handlers/auth");
 const routes = require("./handlers/routes");
 const views = require("./views");
 
@@ -23,6 +23,7 @@ app.use(methodOverride(function (req, _res) {
 }));
 
 app.use(createAuthHandlers());
+app.use("/books*", checkAuthenticationHandler);
 app.use(routes);
 
 app.use((_req, res, _next) => {
