@@ -1,25 +1,42 @@
 <master-layout>
     <@body>
-        <h1>Login</h1>
-        <if(input.message)>
-            <div>${input.message}</div>
-        </if>
-        <form action="/login" method="POST">
-            <div>
-                <label for="email">E-mail:</label>
-                <input type="text" id="email" name="email" placeholder="Insert your e-mail"/>
+        <section class="section">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-4">
+                        <div class="codex-title has-text-centered">
+                            <h1 class="title">Codex Store</h1>
+                            <h2 class="subtitle">Login</h2>
+                        </div>
+                        <if(input.message)>
+                            <div class="notification is-danger">${input.message}</div>
+                        </if>
+                        <form action="/login" method="POST">
+                            <div class="field">
+                                <label class="label" for="email">E-mail:</label>
+                                <input
+                                    class="input"
+                                    type="text"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Insert your e-mail"/>
+                            </div>
+                            <div class="field">
+                                <label class="label" for="password">Password:</label>
+                                <input
+                                    class="input"
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Insert your password"/>
+                            </div>
+                            <div class="field">
+                                <button class="button is-link is-fullwidth" type="submit">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label for="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Insert your password"/>
-            </div>
-            <div>
-                <button type="submit">Login</button>
-            </div>
-        </form>
+        </section>
     </@body>
 </master-layout>

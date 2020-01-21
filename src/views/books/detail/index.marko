@@ -1,44 +1,60 @@
 <master-layout>
     <@body>
-        <h1>New book</h1>
-        <if(input.validations)>
-            <for|error| of=input.validations>
-                <div>${error.msg}</div>
-            </for>
-        </if>
-        <form action="/books" method="post">
-            <if(input.book.id)>
-                <input type="hidden" name="_method" value="PUT"/>
-                <input type="hidden" name="id" value=input.book.id/>
-            </if>
-            <div>
-                <label for="title">Title:</label>
-                <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    value=input.book.title
-                    placeholder="Insert your title"/>
+        <section class="section">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-half">
+                        <div class="codex-title has-text-centered">
+                            <h1 class="title">Codex Store</h1>
+                            <h2 class="subtitle">New book</h2>
+                        </div>
+                        <if(input.validations)>
+                            <for|error| of=input.validations>
+                                <div class="notification is-danger">${error.msg}</div>
+                            </for>
+                        </if>
+                        <form action="/books" method="post">
+                            <if(input.book.id)>
+                                <input type="hidden" name="_method" value="PUT"/>
+                                <input type="hidden" name="id" value=input.book.id/>
+                            </if>
+                            <div class="field">
+                                <label class="label" for="title">Title:</label>
+                                <input
+                                    class="input"
+                                    type="text"
+                                    id="title"
+                                    name="title"
+                                    value=input.book.title
+                                    placeholder="Insert your title"/>
+                            </div>
+                            <div class="field">
+                                <label class="label" for="price">Price:</label>
+                                <input
+                                    class="input"
+                                    type="text"
+                                    id="price"
+                                    name="price"
+                                    placeholder="Ex: 150.25"
+                                    value=input.book.price/>
+                            </div>
+                            <div class="field">
+                                <label class="label" for="description">Description:</label>
+                                <textarea
+                                    class="textarea"
+                                    cols="20"
+                                    rows="10"
+                                    id="description"
+                                    name="description"
+                                    placeholder="Insert your description">${input.book.description}</textarea>
+                            </div>
+                            <div class="field">
+                                <button class="button is-success" type="submit">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label for="price">Price:</label>
-                <input
-                    type="text"
-                    id="price"
-                    name="price"
-                    placeholder="Ex: 150.25"
-                    value=input.book.price/>
-            </div>
-            <div>
-                <label for="description">Description:</label>
-                <textarea
-                    cols="20"
-                    rows="10"
-                    id="description"
-                    name="description"
-                    placeholder="Insert your description">${input.book.description}</textarea>
-            </div>
-            <input type="submit" value="Save"/>
-        </form>
+        </section>
     </@body>
 </master-layout>

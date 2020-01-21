@@ -23,7 +23,7 @@ app.use(methodOverride(function (req, _res) {
 }));
 
 app.use(createAuthHandlers());
-app.use("/books*", checkAuthenticationHandler);
+//app.use("/books*", checkAuthenticationHandler);
 app.use(routes);
 
 app.use((_req, res, _next) => {
