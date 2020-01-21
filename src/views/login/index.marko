@@ -1,0 +1,26 @@
+<master-layout>
+    <@body>
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <div>
+                <label for="username">Username:</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Insert your username"/>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Insert your password"/>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </@body>
+</master-layout>

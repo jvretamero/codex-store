@@ -3,6 +3,7 @@ const router = express.Router();
 
 const homeHandlers = require("./home");
 const bookHandlers = require("./books");
+const loginHandlers = require("./login");
 
 const Book = require("../models/book");
 
@@ -20,5 +21,9 @@ booksRouter.route("/:id")
     .delete(bookHandlers.deleteBook);
 
 router.use("/books", booksRouter);
+
+router.route("/login")
+    .get(loginHandlers.loginForm)
+    .post(loginHandlers.doLogin);
 
 module.exports = router;
