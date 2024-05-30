@@ -9,6 +9,12 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL
 )`;
 
+const USUARIO_ADM = `
+INSERT INTO users (name, email, password)
+SELECT 'admin', 'admin@admin.com', '12345'
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE name = 'admin')
+`;
+
 const LIVROS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS books (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,6 +26,7 @@ CREATE TABLE IF NOT EXISTS books (
 db.serialize(() => {
     db.run("PRAGMA foreign_keys=ON");
     db.run(USUARIOS_SCHEMA);
+    db.run(USUARIO_ADM);
     db.run(LIVROS_SCHEMA);
 });
 
